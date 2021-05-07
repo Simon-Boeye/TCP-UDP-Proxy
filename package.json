@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Simon-Boeye/TCP-UDP-Proxy/issues"
   },
-  "homepage": "https://github.com/Simon-Boeye/TCP-UDP-Proxy#readme"
+  "homepage": "https://github.com/Simon-Boeye/TCP-UDP-Proxy#readme",
+  "dependencies": {
+    "prompt": "^1.1.0"
+  }
 }
