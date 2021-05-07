@@ -1,0 +1,19 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "description": "Project for intercepting and altering TCP/UDP traffic.",
+  "main": "proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simon-Boeye/TCP-UDP-Proxy.git"
+  },
+  "author": "Simon Boeye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simon-Boeye/TCP-UDP-Proxy/issues"
+  },
+  "homepage": "https://github.com/Simon-Boeye/TCP-UDP-Proxy#readme"
+}
