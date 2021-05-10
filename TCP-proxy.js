@@ -1,5 +1,5 @@
 "use strict"
-let net = require('net');
+const net = require('net');
 
 class TCPProxy{
     constructor(localPort, remotePort, remoteAddr){
@@ -9,24 +9,24 @@ class TCPProxy{
     }
 
     startServer(localPort, remotePort, remoteAddr){
-        let server = net.createServer(function (localSocket) {
+        const server = net.createServer(function (localSocket) {
             localSocket.on('data', function (msg) {
-                console.log('From client to proxy ', msg.toString());
+                console.log('From client to proxy: ', msg);
 
-                let remoteSocket = new net.Socket();            
+                const remoteSocket = new net.Socket();            
                 remoteSocket.connect(remotePort, remoteAddr,()=>{
                     remoteSocket.write(msg);
                 });               
 
-                remoteSocket.on("data", function (data) {
-                    console.log('From remote to proxy', data.toString());
+                remoteSocket.on('data', function (data) {
+                    console.log('From remote to proxy: ', data);
                     localSocket.write(data);
                 });
             });
         });
         
         server.listen(localPort);
-        console.log("TCP server accepting connection on port: " + this.localPort);
+        console.log("TCP server accepting connection on port: " + localPort);
     }
 }
 

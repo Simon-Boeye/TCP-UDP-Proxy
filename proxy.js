@@ -1,12 +1,13 @@
 "use strict"
 const prompt = require('prompt');
 const TCPProxy = require('./TCP-proxy');
+const UDPProxy = require('./UDP-proxy');
 
 let proxy;
 
 prompt.start();
 
-console.log('1. TCP proxy');
+console.log('1. TCP proxy\n2. UDP proxy');
 
 
 prompt.get([{
@@ -22,6 +23,8 @@ prompt.get([{
     try {
         if (result.option === 1) {
             proxy = new TCPProxy(result.localPort, result.remotePort, result.remoteAddress);
+        }else if (result.option === 2){
+            proxy = new UDPProxy(result.localPort, result.remotePort, result.remoteAddress);
         }
         
         proxy.startServer(proxy.localPort, proxy.remotePort, proxy.remoteAddr);
