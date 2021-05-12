@@ -15,7 +15,22 @@ prompt.get([{
     description: 'type proxy',
     type: 'integer',
     required: true
-}, 'localPort', 'remotePort', 'remoteAddress'], function (err, result) {
+}, {
+    name: 'localPort',
+    description: 'local port number',
+    type: 'integer',
+    required: true
+}, {
+    name: 'remotePort',
+    description: 'remote port number',
+    type: 'integer',
+    required: true
+}, {
+    name: 'remoteAddress',
+    description: 'remote ip address',
+    type: 'string',
+    required: true
+}], function (err, result) {
     if (err) {
         console.error(err);
     }
@@ -23,10 +38,10 @@ prompt.get([{
     try {
         if (result.option === 1) {
             proxy = new TCPProxy(result.localPort, result.remotePort, result.remoteAddress);
-        }else if (result.option === 2){
+        } else if (result.option === 2) {
             proxy = new UDPProxy(result.localPort, result.remotePort, result.remoteAddress);
         }
-        
+
         proxy.startServer(proxy.localPort, proxy.remotePort, proxy.remoteAddr);
 
     } catch (err) {
@@ -37,5 +52,4 @@ prompt.get([{
 
 process.on('uncaughtException', function (err) {
     console.log(err);
-}); 
-
+});
